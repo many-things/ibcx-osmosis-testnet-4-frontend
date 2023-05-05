@@ -2,9 +2,7 @@
   "version": "4.0.0",
   "useWorkspaces": true,
   "npmClient": "yarn",
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "registry": "https://registry.npmjs.org",
   "command": {
     "create": {

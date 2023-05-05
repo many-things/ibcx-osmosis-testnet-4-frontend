@@ -14,7 +14,7 @@ jobs:
       - name: Install and Build 🔧 # This will create version inside the 'build' folder.
         run: |
           yarn
-          yarn build:css && yarn build 
+          yarn build:css && yarn build
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5

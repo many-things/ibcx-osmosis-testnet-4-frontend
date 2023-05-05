@@ -2,8 +2,8 @@
 
 There are three different frontend flavours:
 
-- Main 
-- Frontier 
+- Main
+- Frontier
 - Testnet
 
 ## Run main frontend
