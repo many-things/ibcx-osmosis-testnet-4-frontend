@@ -1,9 +1,9 @@
 import { CoinPretty, Dec, DecUtils, RatePretty } from "@keplr-wallet/unit";
-import { ObservablePoolDetail } from "@osmosis-labs/stores";
+
 import { Duration } from "dayjs/plugin/duration";
 import { observer } from "mobx-react-lite";
 import type { NextPage } from "next";
-import { ComponentProps, useCallback, useMemo, useState } from "react";
+import { ComponentProps, useCallback, useState } from "react";
 import { useTranslation } from "react-multi-lang";
 
 import { ShowMoreButton } from "~/components/buttons/show-more";
@@ -286,26 +286,9 @@ const MyPoolsSection = observer(() => {
   const account = accountStore.getAccount(chainId);
 
   // my pools
-  const myPoolIds = queryOsmosis.queryGammPoolShare.getOwnPools(
-    account.bech32Address
-  );
+
   const poolCountShowMoreThreshold = isMobile ? 3 : 6;
-  const myPools = useMemo(
-    () =>
-      (isMobile && !showMoreMyPools
-        ? myPoolIds.slice(0, poolCountShowMoreThreshold)
-        : myPoolIds
-      )
-        .map((myPoolId) => derivedDataStore.poolDetails.get(myPoolId))
-        .filter((pool): pool is ObservablePoolDetail => !!pool),
-    [
-      isMobile,
-      showMoreMyPools,
-      myPoolIds,
-      poolCountShowMoreThreshold,
-      derivedDataStore.poolDetails,
-    ]
-  );
+  const myPools = [derivedDataStore.poolDetails.get("820")];
 
   const dustFilteredPools = useHideDustUserSetting(
     myPools,
@@ -328,7 +311,7 @@ const MyPoolsSection = observer(() => {
 
   return (
     <div className="mx-auto pb-[3.75rem]">
-      <h5 className="md:px-3">{t("pools.myPools")}</h5>
+      <h5 className="md:px-3">{"IBCX Test Pool"}</h5>
       <div className="flex flex-col gap-4">
         <div className="grid-cards mt-5 grid md:gap-3">
           {dustFilteredPools.map((myPool) => {
@@ -432,7 +415,7 @@ const MyPoolsSection = observer(() => {
             );
           })}
         </div>
-        {isMobile && myPoolIds.length > poolCountShowMoreThreshold && (
+        {isMobile && ["820"].length > poolCountShowMoreThreshold && (
           <div className="mx-auto">
             <ShowMoreButton
               isOn={showMoreMyPools}
