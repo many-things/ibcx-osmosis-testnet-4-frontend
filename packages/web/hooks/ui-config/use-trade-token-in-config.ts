@@ -38,8 +38,9 @@ export function useTradeTokenInConfig(
         undefined,
         {
           send: {
-            coinDenom: "ATOM",
-            coinMinimalDenom: "uatom",
+            coinDenom: "IBCX",
+            coinMinimalDenom:
+              "factory/osmo1uldtcnrgmdrdh5v6mq8f84cezh6fvzr3euyrec7lwyta62jzyc5q0pvch9/uibcx",
             coinDecimals: 6,
           },
           out: {

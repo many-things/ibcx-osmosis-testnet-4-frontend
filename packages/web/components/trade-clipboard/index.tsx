@@ -327,6 +327,7 @@ export const TradeClipboard: FunctionComponent<{
      * 1. not given token selected in other token select component
      * 2. not in sendable currencies
      */
+
     const getTokenSelectTokens = useCallback(
       (otherSelectedToken: string) => {
         return tradeableCurrencies
@@ -346,6 +347,7 @@ export const TradeClipboard: FunctionComponent<{
 
             // respect filtering conditions in assets store (verified assets, etc.)
             const coins = nativeBalances.concat(ibcBalances);
+
             return coins.find(
               (coin) => coin.balance.denom === currency.coinDenom
             )?.balance;
@@ -367,6 +369,7 @@ export const TradeClipboard: FunctionComponent<{
       () => getTokenSelectTokens(tradeTokenInConfig.outCurrency.coinDenom),
       [getTokenSelectTokens, tradeTokenInConfig.outCurrency.coinDenom]
     );
+
     const tokenOutTokens = useMemo(
       () => getTokenSelectTokens(tradeTokenInConfig.sendCurrency.coinDenom),
       [getTokenSelectTokens, tradeTokenInConfig.sendCurrency.coinDenom]
@@ -794,6 +797,7 @@ export const TradeClipboard: FunctionComponent<{
                   const tokenInCurrency = tradeableCurrenciesRef.current.find(
                     (currency) => currency.coinDenom === tokenDenom
                   );
+
                   if (tokenInCurrency) {
                     tradeTokenInConfig.setSendCurrency(tokenInCurrency);
                   }

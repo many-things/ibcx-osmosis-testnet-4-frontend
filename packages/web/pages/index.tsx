@@ -1,4 +1,3 @@
-import { Dec } from "@keplr-wallet/unit";
 import { observer } from "mobx-react-lite";
 import type { NextPage } from "next";
 import { useMemo } from "react";
@@ -23,12 +22,7 @@ const Home: NextPage = observer(function () {
   const pools = useMemo(
     () =>
       allPools
-        .filter((pool) =>
-          pool
-            .computeTotalValueLocked(priceStore)
-            .toDec()
-            .gte(new Dec(IS_FRONTIER ? 1_000 : 10_000))
-        )
+        .filter((pool) => pool.id === "820")
         .sort((a, b) => {
           // sort by TVL to find routes amongst most valuable pools
           const aTVL = a.computeTotalValueLocked(priceStore);

@@ -61,9 +61,11 @@ const chainInfos = (
               {
                 coinDenom: "IBCX",
                 coinMinimalDenom:
-                  "factory/osmo13t90mkyvdnmn9wm8hfen6jk3hnlt8uqx8savlvjd5xghy5z6ye2qymy6cy/uibcx",
+                  "factory/osmo1uldtcnrgmdrdh5v6mq8f84cezh6fvzr3euyrec7lwyta62jzyc5q0pvch9/uibcx",
                 coinDecimals: 6,
                 coinImageUrl: "/tokens/ibcx.svg",
+                coinGeckoId:
+                  "pool:factory/osmo1uldtcnrgmdrdh5v6mq8f84cezh6fvzr3euyrec7lwyta62jzyc5q0pvch9/uibcx",
               },
             ]
           : []),
@@ -72,7 +74,7 @@ const chainInfos = (
       explorerUrlToTx:
         OSMOSIS_EXPLORER_URL_OVERWRITE ??
         (IS_TESTNET
-          ? "https://testnet.mintscan.io/osmosis-testnet/txs/{txHash}"
+          ? "https://testnet.ping.pub/osmosis/tx/{txHash}"
           : "https://www.mintscan.io/osmosis/txs/{txHash}"),
     },
     {
@@ -3307,12 +3309,13 @@ const chainInfos = (
           gasPriceStep: {
             low: 0.002,
             average: 0.002,
-            high: 0.025
-          }
+            high: 0.025,
+          },
         },
       ],
       features: ["ibc-transfer", "ibc-go"],
-      explorerUrlToTx: "https://bd.explorer.net.bluzelle.com/transactions/${txHash}",
+      explorerUrlToTx:
+        "https://bd.explorer.net.bluzelle.com/transactions/${txHash}",
     },
   ] as SimplifiedChainInfo[]
 ).map(createKeplrChainInfos);
